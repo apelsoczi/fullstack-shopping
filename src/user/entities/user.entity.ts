@@ -25,8 +25,8 @@ export class User {
     first: string,
     last: string
   ) {
-    this.password = password;
     this.username = username;
+    this.password = password;
     this.first = first;
     this.last = last;
   }
