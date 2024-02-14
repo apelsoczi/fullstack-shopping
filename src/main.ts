@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as dotenv from 'dotenv'
-import { logger } from './shared/middleware/logger.middleware';
+import { logger } from './middleware/logger.middleware';
 dotenv.config({ path: './server.env' })
 
 function isProduction(): boolean {
