@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PasswordService } from './password.service';
 import { v4 as uuidv4 } from 'uuid';
+import { LoginAuthDto } from './dto/login-auth.dto';
 
 @Injectable()
 export class AuthService {
@@ -30,6 +31,20 @@ export class AuthService {
         this.userRepository.insert(user)
         console.log(user)
         return user
+    }
+
+    async login(dto: LoginAuthDto): Promise<User> {
+        let user: User;
+        user = await this.userRepository.findOneBy({ username: dto.username })
+        if (!user) {
+            throw new Error("invalid username or password")
+        }
+        
+        if (this.passwordService.comparePassword(dto.password, user.password)) {
+            return user
+        } else {
+            return undefined
+        }
     }
 
 }
