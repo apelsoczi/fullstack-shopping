@@ -6,7 +6,10 @@ import {
 
 @Entity({ name: 'users' })
 export class User {
-    
+
+  @Column({ type: 'uuid', unique: true })
+  id: string;
+
   @PrimaryColumn({ type: 'text', unique: true })
   username: string;
 
@@ -20,11 +23,13 @@ export class User {
   last: string;
 
   constructor(
+    id: string,
     username: string,
     password: string,
     first: string,
     last: string
   ) {
+    this.id = id
     this.username = username;
     this.password = password;
     this.first = first;
