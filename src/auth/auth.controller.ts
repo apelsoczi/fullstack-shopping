@@ -5,6 +5,8 @@ import {
     HttpException,
     HttpStatus,
     ValidationPipe,
+    Get,
+    Request,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterAuthDto } from './dto/register-auth.dto';
@@ -12,6 +14,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { JwtService } from '@nestjs/jwt';
 import { UserJwt } from './entities/user-jwt.entity.dto';
 import { LoginAuthDto } from './dto/login-auth.dto';
+import { Public } from './decorators/public.decorator';
 
 @ApiTags("auth")
 @Controller('auth')
@@ -21,6 +24,7 @@ export class AuthController {
         private readonly jwtService: JwtService,
     ) { }
 
+    @Public()
     @Post('register')
     @ApiOperation({ description: "Register a user account" })
     async register(@Body(new ValidationPipe()) dto: RegisterAuthDto): Promise<UserJwt> {
@@ -38,6 +42,7 @@ export class AuthController {
         }
     }
 
+    @Public()
     @Post('login')
     @ApiOperation({ description: "Login to a user account" })
     async login(@Body(new ValidationPipe()) dto: LoginAuthDto): Promise<UserJwt> {
@@ -53,6 +58,11 @@ export class AuthController {
                 throw new HttpException(error?.message || "/auth/login", HttpStatus.BAD_REQUEST);
             }
         }
+    }
+
+    @Get('verify')
+    getProfile(@Request() request: Request) {
+        return request['user']
     }
 
     private accessToken(userId: string, username: string): string {
