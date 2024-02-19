@@ -9,7 +9,7 @@ export interface ProductResponse {
 }
 
 const productApi = createApi({
-    reducerPath: 'product',
+    reducerPath: 'apiProduct',
     baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_API_URL + '/product' }),
     endpoints: (builder) => ({
         getProducts: builder.query<ProductResponse[], void>({

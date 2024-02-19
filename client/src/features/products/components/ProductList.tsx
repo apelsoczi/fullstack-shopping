@@ -1,4 +1,3 @@
-import store from "../../../app/store";
 import { useGetProductsQuery } from "../productApi";
 import ProductItem from "./ProductItem";
 
