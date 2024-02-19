@@ -1,5 +1,5 @@
 import { logout, setToken } from "./authSlice";
-import { LoginCredentials, usePostLoginMutation } from "./authApi";
+import { LoginCredentials, usePostLoginMutation } from "./authEndpoints";
 import { store } from "../../app/store";
 import { useNavigate } from "react-router-dom";
 import { Path } from "../../app/AppRoutes";

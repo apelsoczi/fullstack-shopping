@@ -1,4 +1,4 @@
-import { useGetProductsQuery } from "../productApi";
+import { useGetProductsQuery } from "../productEndpoints";
 import ProductItem from "./ProductItem";
 
 export default function ProductList() {

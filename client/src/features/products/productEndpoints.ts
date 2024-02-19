@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import shoppingApi from '../../api/shoppingApi'
 
 export interface ProductResponse {
     id: number,
@@ -8,12 +8,10 @@ export interface ProductResponse {
     stock: number
 }
 
-const productApi = createApi({
-    reducerPath: 'apiProduct',
-    baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_API_URL + '/product' }),
+const productEndpoints = shoppingApi.injectEndpoints({
     endpoints: (builder) => ({
         getProducts: builder.query<ProductResponse[], void>({
-            query: () => '/',
+            query: () => '/product',
             transformErrorResponse: (response) => {
                 console.log(response)
                 return response
@@ -23,6 +21,6 @@ const productApi = createApi({
 })
 
 
-export const { useGetProductsQuery } = productApi
+export const { useGetProductsQuery } = productEndpoints
 
-export default productApi
+export default productEndpoints

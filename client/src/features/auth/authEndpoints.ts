@@ -1,5 +1,4 @@
-import { createEntityAdapter } from '@reduxjs/toolkit'
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import shoppingApi from '../../api/shoppingApi'
 
 export interface LoginResponse {
     token: string
@@ -10,13 +9,11 @@ export interface LoginCredentials {
     password: string
 }
 
-const authApi = createApi({
-    reducerPath: 'apiAuth',
-    baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_API_URL + '/auth' }),
+const authEndpoints = shoppingApi.injectEndpoints({
     endpoints: (builder) => ({
         postLogin: builder.mutation<LoginResponse, LoginCredentials>({
             query: (credentials) => ({
-                url: '/login',
+                url: '/auth/login',
                 method: 'POST',
                 body: credentials,
             }),
@@ -24,6 +21,6 @@ const authApi = createApi({
     })
 })
 
-export const { usePostLoginMutation } = authApi
+export const { usePostLoginMutation } = authEndpoints
 
-export default authApi
+export default authEndpoints

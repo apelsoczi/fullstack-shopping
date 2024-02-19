@@ -1,4 +1,4 @@
-import { useGetProfileQuery } from "./profileApi"
+import { useGetProfileQuery } from "./profileEndpoints"
 
 export default function ProfilePage() {
     const { data, error, isLoading } = useGetProfileQuery()

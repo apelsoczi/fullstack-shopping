@@ -1,4 +1,4 @@
-import { ProductResponse } from "../productApi"
+import { ProductResponse } from "../productEndpoints"
 
 const ProductItem: React.FC<{
     product: ProductResponse
