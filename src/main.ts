@@ -3,7 +3,6 @@ import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as dotenv from 'dotenv'
-import { logger } from './middleware/logger.middleware';
 dotenv.config({ path: './server.env' })
 
 function isProduction(): boolean {
@@ -27,7 +26,6 @@ async function bootstrap() {
     SwaggerModule.setup('/api', app, document)
   }
 
-  app.use(logger)
   await app.listen(process.env.PORT);
 }
 bootstrap();
