@@ -27,8 +27,9 @@ const authSlice = createSlice({
 });
 
 const selectIsAuthenticated = (state: RootState) => state.persistentAuth.isAuthenticated;
+const selectAuthToken = (state: RootState) => state.persistentAuth.token;
 
-export { selectIsAuthenticated }
+export { selectIsAuthenticated, selectAuthToken }
 
 export const { setToken, logout } = authSlice.actions;
 

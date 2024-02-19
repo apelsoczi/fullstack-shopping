@@ -5,6 +5,7 @@ import authApi from '../features/auth/authApi';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import authSlice, { AuthState } from '../features/auth/authSlice';
+import profileApi from '../features/profile/profileApi';
 
 const persistConfig = {
     key: 'root',
@@ -17,13 +18,15 @@ const store = configureStore({
     reducer: combineReducers({
         persistentAuth: persistentAuthReducer,
         [authApi.reducerPath]: authApi.reducer,
-        [productApi.reducerPath]: productApi.reducer
+        [productApi.reducerPath]: productApi.reducer,
+        [profileApi.reducerPath]: profileApi.reducer, 
     }),
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: false
     })
         .concat(authApi.middleware)
-        .concat(productApi.middleware),
+        .concat(productApi.middleware)
+        .concat(profileApi.middleware),
 })
 
 export type RootState = ReturnType<typeof store.getState>
