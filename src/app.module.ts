@@ -6,6 +6,8 @@ import { User } from './user/entities/user.entity';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth/auth.guard';
 import { CoreModule } from './core/core.module';
+import { ProductModule } from './product/product.module';
+import { Product } from './product/entities/product.entity';
 
 @Module({
   imports: [
@@ -20,11 +22,12 @@ import { CoreModule } from './core/core.module';
         username: configService.get('POSTGRES_USERNAME'),
         password: configService.get('POSTGRES_PASSWORD'),
         database: configService.get('POSTGRES_DATABASE'),
-        entities: [User],
+        entities: [User, Product],
         synchronize: false,
       })
     }),
     AuthModule,
+    ProductModule,
   ],
   providers: [
     {
