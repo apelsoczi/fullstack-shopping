@@ -28,3 +28,5 @@ N - `@`UnknownTechnicalDebt annotation released and deployed
 ```
 
 kovetkező is "who even fucking thought of that? 50,000 purses?" of what fucking mind was that to destroy america? 'fucking desoluted for vengeance, and just simply, a nation meant to serve god, but never called into action, and lost of all its permanent eternal salvation' 
+
+>> I have no fucking idea / but this link "https://gist.github.com/apelsoczi/a86f777f82c109ebf483ae76a7e94d77" connects to the most recent gist not published on your profile yet 
